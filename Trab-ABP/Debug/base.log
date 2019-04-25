@@ -1,0 +1,9 @@
+﻿  Rouge.cpp
+  PersoBase.cpp
+c:\users\andrellprado\desktop\libunicornio-master\projetos\trab-abp\persobase.cpp(10): warning C4305: '=': truncamento de 'int' para 'bool'
+  Jogo.cpp
+  Gerando Código...
+  Ignorando... (nenhuma alteração relevante detectada)
+  main.cpp
+  base.vcxproj -> C:\Users\AndreLLPrado\Desktop\libUnicornio-master\projetos\Trab-ABP\bin\base-debug.exe
+  base.vcxproj -> C:\Users\AndreLLPrado\Desktop\libUnicornio-master\projetos\Trab-ABP\bin\base-debug.pdb (Full PDB)
