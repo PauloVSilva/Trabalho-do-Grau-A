@@ -1,0 +1,16 @@
+font 
+Bearskin.otf site:1001freefonts
+
+sprite
+Knight assetsProf.Raphael
+Mage   assetsProf.Raphael
+Rouge  assetsProf.Raphael
+Ghost  googleImagens
+Sword  Bruno
+
+fundo
+FundoJogo Bruno
+FundoMenu Bruno
+
+music
+epic site:bensound

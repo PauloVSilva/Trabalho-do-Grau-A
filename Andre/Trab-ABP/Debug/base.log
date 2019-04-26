@@ -1,0 +1,10 @@
+﻿  Jogo.cpp
+c:\users\andrellprado\desktop\libunicornio-master\projetos\trab-abp\jogo.cpp(46): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+c:\users\andrellprado\desktop\libunicornio-master\projetos\trab-abp\jogo.cpp(50): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+c:\users\andrellprado\desktop\libunicornio-master\projetos\trab-abp\jogo.cpp(54): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+c:\users\andrellprado\desktop\libunicornio-master\projetos\trab-abp\jogo.cpp(58): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+  Gerando Código...
+  Ignorando... (nenhuma alteração relevante detectada)
+  main.cpp
+  base.vcxproj -> C:\Users\AndreLLPrado\Desktop\libUnicornio-master\projetos\Trab-ABP\bin\base-debug.exe
+  base.vcxproj -> C:\Users\AndreLLPrado\Desktop\libUnicornio-master\projetos\Trab-ABP\bin\base-debug.pdb (Full PDB)
