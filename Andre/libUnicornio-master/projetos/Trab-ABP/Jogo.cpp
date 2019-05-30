@@ -12,9 +12,14 @@ Jogo::~Jogo()
 void Jogo::inicializar()
 {
 	uniInicializar(800, 600, false);
-	telaAtual = tMenu;
-	//	O resto da inicialização vem aqui!
-	//	...
+	telaAtual = tInicial;
+	sysLogin.inicializar();
+
+	if(!sysLogin.inicializar()){
+		gDebug.erro("Funcao login inicializar nao abriu!");
+	}
+
+	gDebug.ativar();
 
 	//carregador de assets
 	/*arquivo.open("../carregadorRecursos.txt", ios::in);
@@ -29,6 +34,15 @@ void Jogo::inicializar()
 		}
 		arquivo.close();
 	}*/
+
+	//inicializar sistema login
+	arqLogin.open("../assets/login.dat", std::ios::binary | std::ios::in);
+	if (arqLogin.is_open()) {
+
+	}
+	else {
+		gDebug.erro("Carregador de login nao abriu!");
+	}
 	
 	//carregar fonte
 	gRecursos.carregarFonte("Fonte1","../assets/Fonts/Bearskin.otf", 32);
@@ -56,6 +70,29 @@ void Jogo::inicializar()
 	gRecursos.carregarSpriteSheet("botaoSair", "../assets/Button/botaoSair.png", 3);
 	bSair.setSpriteSheet("botaoSair");
 	bSair.setPos((gJanela.getLargura() / 2) - 176, (gJanela.getAltura() / 2) + 222);
+
+	gRecursos.carregarSpriteSheet("botaoLogar","../assets/Button/botaoLogar.png", 3);
+	bLogar.setSpriteSheet("botaoLogar");
+	bLogar.setPos(gJanela.getLargura() / 2 , gJanela.getAltura() / 2);
+
+	gRecursos.carregarSpriteSheet("botaoCadastrar", "../assets/Button/botaoCadastrar.png", 3);
+	bCdastrar.setSpriteSheet("botaoCadastrar");
+	bCdastrar.setPos(gJanela.getLargura() / 2, (gJanela.getAltura() / 2) + 60);
+
+	gRecursos.carregarSpriteSheet("botaoSair2", "../assets/Button/botaoSair2.png", 3);
+	bSair2.setSpriteSheet("botaoSair2");
+	bSair2.setPos(gJanela.getLargura() / 2, (gJanela.getAltura() / 2) + 120);
+
+	//
+	vermelho.set(255,0,0,255);
+
+	tUsuario.setFonte("Fonte1");
+	tUsuario.setCor(vermelho);
+	tSenha.setFonte("Fonte1");
+	tSenha.setCor(vermelho);
+
+	tUsuario.setString("Informe o seu Usuario: ");
+	//
 
 	//carregar sprite extra
 
@@ -105,18 +142,25 @@ void Jogo::executar()
 	{
 		uniIniciarFrame();
 
+		gDebug.atualizar();
+		gDebug.desenhar();
 		//	Seu código vem aqui!
 		//	...
 		//tela vai ser executadas de cada vez 
 		switch (telaAtual)
 		{
+		case tInicial: telaInicial();
+			break;
 		case tMenu: telaMenu();
 			break;
 		case tJogo: telaJogo();
 			break;
 		case tFinal: telaFinal();
 			break;
-
+		case tCadastrar: telaCadastrar();
+			break;
+		case tLogin: telaLogin();
+			break;
 		}
 		
 		
@@ -185,4 +229,46 @@ void Jogo::telaJogo()
 
 void Jogo::telaFinal()
 {
+}
+
+void Jogo::telaLogin()
+{
+}
+
+void Jogo::telaCadastrar()
+{
+	tUsuario.desenhar(gJanela.getLargura() / 2, gJanela.getAltura() / 2);
+	cin >> login;
+	if (!usuario.estaHabilitado()) {
+		
+
+		usuario.habilitar();
+		usuario.atualizar();
+
+		usuario.setString(login);
+	}
+}
+
+void Jogo::telaInicial()
+{
+	bLogar.atualizar();
+	bLogar.desenhar();
+
+	bCdastrar.atualizar();
+	bCdastrar.desenhar();
+
+	bSair2.atualizar();
+	bSair2.desenhar();
+
+	if (bLogar.estaClicado()) {
+		telaAtual = tLogin;
+	}
+
+	if (bCdastrar.estaClicado()) {
+		telaAtual = tCadastrar;
+	}
+
+	if (bSair2.estaClicado()) {
+		saida = false;
+	}
 }

@@ -14,7 +14,7 @@
     <ProjectGuid>{67AC409B-9BDA-4D9D-86C1-D2B9885557CF}</ProjectGuid>
     <RootNamespace>base</RootNamespace>
     <Keyword>Win32Proj</Keyword>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -106,6 +106,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PersoBase.cpp" />
     <ClCompile Include="Rouge.cpp" />
+    <ClCompile Include="SistemaLogin.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CarregadorAssets.h" />
@@ -114,6 +115,7 @@
     <ClInclude Include="Mage.h" />
     <ClInclude Include="PersoBase.h" />
     <ClInclude Include="Rouge.h" />
+    <ClInclude Include="SistemaLogin.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
