@@ -237,16 +237,14 @@ void Jogo::telaLogin()
 
 void Jogo::telaCadastrar()
 {
-	tUsuario.desenhar(gJanela.getLargura() / 2, gJanela.getAltura() / 2);
-	cin >> login;
-	if (!usuario.estaHabilitado()) {
-		
+	tUsuario.desenhar(gJanela.getLargura() / 2, gJanela.getAltura() / 2 - 40);
+		input.inicializar();
 
-		usuario.habilitar();
-		usuario.atualizar();
-
-		usuario.setString(login);
-	}
+		if (gTeclado.pressionou[TECLA_ENTER]) {
+			input.finalizar();
+			login = input.getTexto();
+		}
+	
 }
 
 void Jogo::telaInicial()

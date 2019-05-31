@@ -1,5 +1,6 @@
 #pragma once
 #include"CarregadorAssets.h"
+#include"InputTexto.h"
 #include"SistemaLogin.h"
 #include "libUnicornio.h"
 #include"PersoBase.h"
@@ -36,7 +37,7 @@ private:
 	//sistema login
 	SistemaLogin sysLogin;
 	std::fstream arqLogin;
-	EventosInputTexto usuario;
+	InputTexto input;
 	std::string senha1, senha2, login;
 	Texto tUsuario, tSenha;
 	Cor vermelho;
