@@ -4,6 +4,7 @@
 
 SistemaLogin::SistemaLogin()
 {
+	
 }
 
 
@@ -12,26 +13,11 @@ SistemaLogin::~SistemaLogin()
 }
 
 bool SistemaLogin::inicializar() {
-	login.open("../assets/login.dat",std::ios::binary | std::ios::out);
-
-	if (login.is_open()) {
-
-		while (!login.eof()) {
-			login.write(reinterpret_cast<const char*>(&t), sizeof(int));
-			break;
-		}
-
-		login.close();
-		return true;
-	}
-	else {
-		gDebug.erro("Arquivo Login nao abriu!");
-		return false;
-	}
+	return false;
 }
 
-bool SistemaLogin::cadastrar(std::fstream &arq, std::string user, std::string senha) {
-	arq.open("../assets/login.dat", std::ios::binary | std::ios::out);
+bool SistemaLogin::cadastrar(std::string user, std::string senha) {
+	arq.open("../assets/login.dat", std::ios::binary | std::ios::out | std::ios::app);
 
 	if (arq.is_open()) {
 			//salvar usuario
@@ -48,5 +34,105 @@ bool SistemaLogin::cadastrar(std::fstream &arq, std::string user, std::string se
 	else {
 		gDebug.erro("Erro ao abrir o arquivo login para cadastro");
 		return false;
+	}
+}
+
+bool SistemaLogin::iniciarCadastro()
+{
+	tEscrita.setFonte("Fonte1");
+	verleho.set(255, 0, 0, 255);
+	tEscrita.setCor(verleho);
+
+	if (inputInicio == false) {
+		input.inicializar();
+		inputInicio = true;
+	}
+
+	if (bUsuario == false) {//Salvar Usuario
+		//configurar texto
+		tEscrita.setString("Iforme o seu nome de Usuario:");
+		tEscrita.desenhar(gJanela.getLargura() / 2, (gJanela.getAltura() / 2) - 40);
+		//inicializar Input
+		input.atualizar();
+		input.desenhar();
+
+		if (gTeclado.pressionou[TECLA_ENTER] || gTeclado.pressionou[TECLA_ENTER2]) {
+			user = input.getTexto();
+			teste = input.getTextoTxt();
+			input.finalizar();
+
+			if (user != "") {
+				bUsuario = true;
+				inputInicio = false;
+			}
+			else {
+				input.inicializar();
+			}
+		}
+	}
+	else if (bSenha1 == false) {
+		//configurar texto
+		tEscrita.setString("Iforme a sua senha:");
+		tEscrita.desenhar(gJanela.getLargura() / 2, (gJanela.getAltura() / 2) - 40);
+
+		//inicializar Input
+		input.atualizar();
+		input.desenhar();
+
+		if (gTeclado.pressionou[TECLA_ENTER] || gTeclado.pressionou[TECLA_ENTER2]) {
+			sn1 = input.getTexto();
+			input.finalizar();
+
+			if (sn1 != "") {
+				bSenha1 = true;
+				inputInicio = false;
+			}
+			else {
+				input.inicializar();
+			}
+		}
+	}
+	else if (bSenha2 == false) {
+		//configurar texto
+		tEscrita.setString("Confirme a senha a sua senha:");
+		tEscrita.desenhar(gJanela.getLargura() / 2, (gJanela.getAltura() / 2) - 40);
+
+		//inicializar Input
+		input.atualizar();
+		input.desenhar();
+
+		if (gTeclado.pressionou[TECLA_ENTER] || gTeclado.pressionou[TECLA_ENTER2]) {
+			sn2 = input.getTexto();
+			input.finalizar();
+
+			if (sn2 != "") {
+				bSenha2 = true;
+				inputInicio = false;
+			}
+			else {
+				input.inicializar();
+			}
+		}
+	}
+	if (bSenha1 == true && bSenha2 == true) {
+		if (sn1 != "" && sn2 != "") {
+		if (sn1 == sn2) {
+			tEscrita.setString("Senha salva:");
+			tEscrita.desenhar(gJanela.getLargura() / 2, (gJanela.getAltura() / 2) - 40);
+
+			cadastrar(user, sn1);
+			return true;
+		}
+		else {
+			tEscrita.setString("Senha incorreta:");
+			tEscrita.desenhar(gJanela.getLargura() / 2, (gJanela.getAltura() / 2) - 40);
+			return false;
+		}
+	}
+		else {
+			tEscrita.setString("Erro: variaveis de senha vazias!");
+			tEscrita.desenhar(gJanela.getLargura() / 2, (gJanela.getAltura() / 2) - 40);
+			return false;
+		}
 	}
 }

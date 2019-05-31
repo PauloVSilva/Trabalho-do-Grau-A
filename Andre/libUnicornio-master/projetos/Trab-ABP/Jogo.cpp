@@ -83,17 +83,6 @@ void Jogo::inicializar()
 	bSair2.setSpriteSheet("botaoSair2");
 	bSair2.setPos(gJanela.getLargura() / 2, (gJanela.getAltura() / 2) + 120);
 
-	//
-	vermelho.set(255,0,0,255);
-
-	tUsuario.setFonte("Fonte1");
-	tUsuario.setCor(vermelho);
-	tSenha.setFonte("Fonte1");
-	tSenha.setCor(vermelho);
-
-	tUsuario.setString("Informe o seu Usuario: ");
-	//
-
 	//carregar sprite extra
 
 	gRecursos.carregarSpriteSheet("Ghost", "../assets/spriteSheets/Ghost.png", 4, 3);
@@ -237,14 +226,10 @@ void Jogo::telaLogin()
 
 void Jogo::telaCadastrar()
 {
-	tUsuario.desenhar(gJanela.getLargura() / 2, gJanela.getAltura() / 2 - 40);
-		input.inicializar();
-
-		if (gTeclado.pressionou[TECLA_ENTER]) {
-			input.finalizar();
-			login = input.getTexto();
-		}
-	
+	sysLogin.iniciarCadastro();
+	if (sysLogin.iniciarCadastro() == true) {
+		telaAtual = tMenu;
+	}
 }
 
 void Jogo::telaInicial()

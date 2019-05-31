@@ -15,6 +15,7 @@ public:
 	void desenhar();
 
 	std::string getTexto();
+	Texto getTextoTxt() { return txt; }
 
 private:
 	Texto txt;
