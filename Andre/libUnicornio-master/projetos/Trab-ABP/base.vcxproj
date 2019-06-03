@@ -114,10 +114,13 @@
     <ClInclude Include="InputTexto.h" />
     <ClInclude Include="Jogo.h" />
     <ClInclude Include="Knight.h" />
+    <ClInclude Include="ListaUsuario.h" />
     <ClInclude Include="Mage.h" />
+    <ClInclude Include="No.h" />
     <ClInclude Include="PersoBase.h" />
     <ClInclude Include="Rouge.h" />
     <ClInclude Include="SistemaLogin.h" />
+    <ClInclude Include="Usuario.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

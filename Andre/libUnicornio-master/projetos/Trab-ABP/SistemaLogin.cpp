@@ -13,7 +13,30 @@ SistemaLogin::~SistemaLogin()
 }
 
 bool SistemaLogin::inicializar() {
-	return false;
+	arq.open("../assets/login.dat", std::ios::binary | std::ios::in);
+	if (arq.is_open()) {
+		//listUser = new ListaUsuario<Usuario>;
+		userDude = new Usuario;
+		while (!arq.eof())
+		{
+			//ler Usuario
+			arq.read(reinterpret_cast<char*>(&sTokken), sizeof(sTokken));
+			userDude->usuario = sTokken;
+
+			//ler senha
+			arq.read(reinterpret_cast<char*>(&sTokken), sizeof(sTokken));
+			userDude->senha = sTokken;
+
+			listUser
+
+		}
+
+		arq.close();
+		return true;
+	}
+	else {
+		return false;
+	}
 }
 
 bool SistemaLogin::cadastrar(std::string user, std::string senha) {
@@ -21,11 +44,11 @@ bool SistemaLogin::cadastrar(std::string user, std::string senha) {
 
 	if (arq.is_open()) {
 			//salvar usuario
-			arq.write(reinterpret_cast<const char*>(&u), sizeof(u));
+			//arq.write(reinterpret_cast<const char*>(&u), sizeof(u));
 			arq.write(reinterpret_cast<const char*>(&user),sizeof(user));
 
 			//savar senha
-			arq.write(reinterpret_cast<const char*>(&s), sizeof(s));
+			//arq.write(reinterpret_cast<const char*>(&s), sizeof(s));
 			arq.write(reinterpret_cast<const char*>(&senha), sizeof(user));
 
 			return true;
