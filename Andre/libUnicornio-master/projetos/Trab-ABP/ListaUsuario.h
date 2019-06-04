@@ -13,7 +13,7 @@ class ListaUsuario
 	T* buscarUsuario(T * elemento);
 
 private:
-	No<T>* inicioLista new No<T>;
+//	No<T>* inicioLista new No<T>;
 	No<T>* listaAux;
 	No<T>* percorreLista;
 };

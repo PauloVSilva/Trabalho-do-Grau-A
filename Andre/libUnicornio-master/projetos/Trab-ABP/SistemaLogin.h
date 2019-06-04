@@ -30,7 +30,7 @@ private:
 	int t = 10;
 
 	//controle de lista
-	ListaUsuario<Usuario> * listUser = new ListaUsuario<Usuario>;
+	//ListaUsuario<Usuario> * listUser = new ListaUsuario<Usuario>;
 	Usuario * userDude;
 };
 

@@ -1,16 +1,4 @@
-﻿cl : Linha de comando warning D9035: opção 'Gm' foi preterida e será removida em uma versão futura
-  SistemaLogin.cpp
-  Gerando Código...
-C:\Users\pc-casa\Documents\GitHub\Trabalho-do-Grau-A\Andre\libUnicornio-master\projetos\Trab-ABP\SistemaLogin.cpp(151): warning C4715: 'SistemaLogin::iniciarCadastro': nem todos os caminhos de controle retornam um valor
-  Compilando...
-  main.cpp
-  Jogo.cpp
-C:\Users\pc-casa\Documents\GitHub\Trabalho-do-Grau-A\Andre\libUnicornio-master\projetos\Trab-ABP\Jogo.cpp(60): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
-C:\Users\pc-casa\Documents\GitHub\Trabalho-do-Grau-A\Andre\libUnicornio-master\projetos\Trab-ABP\Jogo.cpp(64): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
-C:\Users\pc-casa\Documents\GitHub\Trabalho-do-Grau-A\Andre\libUnicornio-master\projetos\Trab-ABP\Jogo.cpp(68): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
-C:\Users\pc-casa\Documents\GitHub\Trabalho-do-Grau-A\Andre\libUnicornio-master\projetos\Trab-ABP\Jogo.cpp(72): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
-C:\Users\pc-casa\Documents\GitHub\Trabalho-do-Grau-A\Andre\libUnicornio-master\projetos\Trab-ABP\Jogo.cpp(76): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
-C:\Users\pc-casa\Documents\GitHub\Trabalho-do-Grau-A\Andre\libUnicornio-master\projetos\Trab-ABP\Jogo.cpp(80): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
-C:\Users\pc-casa\Documents\GitHub\Trabalho-do-Grau-A\Andre\libUnicornio-master\projetos\Trab-ABP\Jogo.cpp(84): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
-  Gerando Código...
-  base.vcxproj -> C:\Users\pc-casa\Documents\GitHub\Trabalho-do-Grau-A\Andre\libUnicornio-master\projetos\Trab-ABP\bin\base-debug.exe
+﻿  SistemaLogin.cpp
+c:\users\andrellprado\documents\github\trabalho-do-grau-a\andre\libunicornio-master\projetos\trab-abp\sistemalogin.cpp(168): warning C4715: 'SistemaLogin::iniciarCadastro': nem todos os caminhos de controle retornam um valor
+  base.vcxproj -> C:\Users\AndreLLPrado\Documents\GitHub\Trabalho-do-Grau-A\Andre\libUnicornio-master\projetos\Trab-ABP\bin\base-debug.exe
+  base.vcxproj -> C:\Users\AndreLLPrado\Documents\GitHub\Trabalho-do-Grau-A\Andre\libUnicornio-master\projetos\Trab-ABP\bin\base-debug.pdb (Full PDB)

@@ -27,7 +27,7 @@ bool SistemaLogin::inicializar() {
 			arq.read(reinterpret_cast<char*>(&sTokken), sizeof(sTokken));
 			userDude->senha = sTokken;
 
-			listUser
+			/*listUser*/
 
 		}
 
@@ -95,7 +95,7 @@ bool SistemaLogin::iniciarCadastro()
 	}
 	else if (bSenha1 == false) {
 		//configurar texto
-		tEscrita.setString("Iforme a sua senha:");
+		tEscrita.setString("Informe a sua senha:");
 		tEscrita.desenhar(gJanela.getLargura() / 2, (gJanela.getAltura() / 2) - 40);
 
 		//inicializar Input
@@ -109,6 +109,7 @@ bool SistemaLogin::iniciarCadastro()
 			if (sn1 != "") {
 				bSenha1 = true;
 				inputInicio = false;
+				bSenha2 = false;
 			}
 			else {
 				input.inicializar();
@@ -147,8 +148,14 @@ bool SistemaLogin::iniciarCadastro()
 			return true;
 		}
 		else {
-			tEscrita.setString("Senha incorreta:");
+			tEscrita.setString("Senha incorreta: precione ENTER para redigitala");
 			tEscrita.desenhar(gJanela.getLargura() / 2, (gJanela.getAltura() / 2) - 40);
+			gDebug.erro("Senha incorreta");
+
+			if (gTeclado.pressionou[TECLA_ENTER]) {//reiniciar cadastro
+				bSenha1 = false;
+			}
+
 			return false;
 		}
 	}
