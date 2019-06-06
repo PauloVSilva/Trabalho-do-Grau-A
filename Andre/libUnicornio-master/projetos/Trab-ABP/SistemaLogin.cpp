@@ -15,22 +15,26 @@ SistemaLogin::~SistemaLogin()
 bool SistemaLogin::inicializar() {
 	arq.open("../assets/login.dat", std::ios::binary | std::ios::in);
 	if (arq.is_open()) {
-		//listUser = new ListaUsuario<Usuario>;
-		userDude = new Usuario;
-		while (!arq.eof())
-		{
-			//ler Usuario
-			arq.read(reinterpret_cast<char*>(&sTokken), sizeof(sTokken));
-			userDude->usuario = sTokken;
-
-			//ler senha
-			arq.read(reinterpret_cast<char*>(&sTokken), sizeof(sTokken));
-			userDude->senha = sTokken;
-
-			/*listUser*/
-
+		if (arq.eof()) {
+			gDebug.erro("arquivo vazio");
 		}
+		else {
+			while (!arq.eof())
+			{
+				uUsuario = new Usuario;
+				//ler Usuario
+				arq.read(reinterpret_cast<char*>(&sTokken), sizeof(sTokken));
+				uUsuario->nome = sTokken;
 
+				//ler senha
+				arq.read(reinterpret_cast<char*>(&sTokken), sizeof(sTokken));
+				uUsuario->senha = sTokken;
+
+				/*listUser*/
+				listaUsuario.push_back(*uUsuario);
+
+			}
+		}
 		arq.close();
 		return true;
 	}
@@ -44,11 +48,9 @@ bool SistemaLogin::cadastrar(std::string user, std::string senha) {
 
 	if (arq.is_open()) {
 			//salvar usuario
-			//arq.write(reinterpret_cast<const char*>(&u), sizeof(u));
 			arq.write(reinterpret_cast<const char*>(&user),sizeof(user));
 
 			//savar senha
-			//arq.write(reinterpret_cast<const char*>(&s), sizeof(s));
 			arq.write(reinterpret_cast<const char*>(&senha), sizeof(user));
 
 			return true;
@@ -62,6 +64,8 @@ bool SistemaLogin::cadastrar(std::string user, std::string senha) {
 
 bool SistemaLogin::iniciarCadastro()
 {
+	cadastroUsuario = new Usuario;
+
 	tEscrita.setFonte("Fonte1");
 	verleho.set(255, 0, 0, 255);
 	tEscrita.setCor(verleho);
@@ -81,12 +85,32 @@ bool SistemaLogin::iniciarCadastro()
 
 		if (gTeclado.pressionou[TECLA_ENTER] || gTeclado.pressionou[TECLA_ENTER2]) {
 			user = input.getTexto();
-			teste = input.getTextoTxt();
+			//teste = input.getTextoTxt();
 			input.finalizar();
 
 			if (user != "") {
-				bUsuario = true;
-				inputInicio = false;
+				//verificar lista de usuarios
+				fimLista = listaUsuario.back();
+				while (listaUsuario.front().nome != fimLista.nome)
+				{
+					if (listaUsuario.front().nome == user) {
+						usuarioRepetido = true;
+						gDebug.erro("Usuario ja existente!");
+						break;
+					}
+					else {
+						aux = listaUsuario.front();
+						listaUsuario.pop_front();
+						listaUsuario.push_back(aux);
+					}
+				}
+				//
+				if (usuarioRepetido == false) {
+					bUsuario = true;
+					inputInicio = false;
+
+					cadastroUsuario->nome = user;
+				}
 			}
 			else {
 				input.inicializar();
@@ -95,7 +119,7 @@ bool SistemaLogin::iniciarCadastro()
 	}
 	else if (bSenha1 == false) {
 		//configurar texto
-		tEscrita.setString("Informe a sua senha:");
+		tEscrita.setString("Informe a sua senha:");//informar a senha
 		tEscrita.desenhar(gJanela.getLargura() / 2, (gJanela.getAltura() / 2) - 40);
 
 		//inicializar Input
@@ -118,7 +142,7 @@ bool SistemaLogin::iniciarCadastro()
 	}
 	else if (bSenha2 == false) {
 		//configurar texto
-		tEscrita.setString("Confirme a senha a sua senha:");
+		tEscrita.setString("Confirme a senha a sua senha:");//confirmar senha
 		tEscrita.desenhar(gJanela.getLargura() / 2, (gJanela.getAltura() / 2) - 40);
 
 		//inicializar Input
@@ -138,11 +162,17 @@ bool SistemaLogin::iniciarCadastro()
 			}
 		}
 	}
-	if (bSenha1 == true && bSenha2 == true) {
-		if (sn1 != "" && sn2 != "") {
-		if (sn1 == sn2) {
+	if (bSenha1 == true && bSenha2 == true) {//verifica se as senhas foram prenchidas
+		if (sn1 != "" && sn2 != "") {//verrifica se as senhas nao estao vazias
+		if (sn1 == sn2) {//verifica se as senhas sao iguais
 			tEscrita.setString("Senha salva:");
 			tEscrita.desenhar(gJanela.getLargura() / 2, (gJanela.getAltura() / 2) - 40);
+
+			cadastroUsuario->senha = sn1;
+
+			listaUsuario.push_back(*cadastroUsuario);
+
+			logando = *cadastroUsuario;
 
 			cadastrar(user, sn1);
 			return true;
@@ -163,6 +193,88 @@ bool SistemaLogin::iniciarCadastro()
 			tEscrita.setString("Erro: variaveis de senha vazias!");
 			tEscrita.desenhar(gJanela.getLargura() / 2, (gJanela.getAltura() / 2) - 40);
 			return false;
+		}
+	}
+}
+
+void SistemaLogin::finalizar()
+{
+	listaUsuario.clear();
+	delete uUsuario;
+	delete cadastroUsuario;
+}
+
+bool SistemaLogin::iniciarLogin()
+{
+	tEscrita.setFonte("Fonte1");
+	verleho.set(255, 0, 0, 255);
+	tEscrita.setCor(verleho);
+
+	if (lUser == false) {//verificar usuario
+		tEscrita.setString("Informe seu nome de usuario:");
+		tEscrita.desenhar(gJanela.getLargura() / 2, (gJanela.getAltura() / 2) - 40);
+
+		if (inputInicio == false) {
+			input.inicializar();
+			inputInicio = true;
+		}
+
+		input.atualizar();
+		input.desenhar();
+
+		if(input.getTexto() != "")
+			if (gTeclado.pressionou[TECLA_ENTER]) {
+				if (listaUsuario.front().nome == input.getTexto()) {
+				lExiste = true;
+				}
+				while (fimLista.nome != listaUsuario.front().nome) {
+					if (listaUsuario.front().nome == input.getTexto()) {
+						lExiste = true;
+						break;
+					}
+					aux = listaUsuario.front();
+					listaUsuario.pop_front();
+					listaUsuario.push_back(aux);
+				}
+				lUser = true;
+			}
+		if (lUser == true) {
+			if (lExiste == false) {
+				gDebug.erro("Usuario nao existe!");
+				inputInicio = false;
+				lUser = false;
+			}
+			else {
+				logando = listaUsuario.front();
+				lUser = true;
+				lSenha = false;
+				input.finalizar();
+				inputInicio = false;
+			}
+		}	
+	}
+
+	if (lSenha == false) {//verificar senha
+		tEscrita.setString("Informe sua senha:");
+		tEscrita.desenhar(gJanela.getLargura() / 2, (gJanela.getAltura() / 2) - 40);
+		
+		if (inputInicio == false) {//ativar input
+			input.inicializar();
+			inputInicio = true;
+		}
+		input.atualizar();
+		input.desenhar();
+
+		if (gTeclado.pressionou[TECLA_ENTER] && input.getTexto() != "") {
+			if (logando.senha == input.getTexto()) {
+				lSenha = true;
+				input.finalizar();
+				return true;
+			}
+			else {
+				gDebug.erro("Senha incorreta!");
+				//return false;
+			}
 		}
 	}
 }

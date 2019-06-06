@@ -14,7 +14,7 @@
     <ProjectGuid>{67AC409B-9BDA-4D9D-86C1-D2B9885557CF}</ProjectGuid>
     <RootNamespace>base</RootNamespace>
     <Keyword>Win32Proj</Keyword>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -26,7 +26,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -114,9 +114,7 @@
     <ClInclude Include="InputTexto.h" />
     <ClInclude Include="Jogo.h" />
     <ClInclude Include="Knight.h" />
-    <ClInclude Include="ListaUsuario.h" />
     <ClInclude Include="Mage.h" />
-    <ClInclude Include="No.h" />
     <ClInclude Include="PersoBase.h" />
     <ClInclude Include="Rouge.h" />
     <ClInclude Include="SistemaLogin.h" />

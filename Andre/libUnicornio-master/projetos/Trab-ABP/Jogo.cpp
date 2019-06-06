@@ -222,6 +222,10 @@ void Jogo::telaFinal()
 
 void Jogo::telaLogin()
 {
+	sysLogin.iniciarLogin();
+	if (sysLogin.iniciarLogin() == true) {
+		telaAtual = tMenu;
+	}
 }
 
 void Jogo::telaCadastrar()

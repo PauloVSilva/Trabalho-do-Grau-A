@@ -3,9 +3,8 @@
 class Usuario
 {
 public:
-	Usuario() { senha = ""; usuario = ""; }
-	~Usuario() {}
+	Usuario(){}
+	~Usuario(){}
 
-	std::string senha, usuario;
+	std::string nome = "", senha = "";
 };
-

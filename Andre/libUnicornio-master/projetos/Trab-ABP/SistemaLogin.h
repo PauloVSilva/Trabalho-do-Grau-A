@@ -2,8 +2,8 @@
 #include<fstream>
 #include"InputTexto.h"
 #include"libUnicornio.h"
+#include<list>
 #include"Usuario.h"
-#include"ListaUsuario.h"
 class SistemaLogin
 {
 public:
@@ -12,8 +12,11 @@ public:
 
 	bool inicializar();
 	bool cadastrar(std::string user, std::string senha);
+	void finalizar();
+
 
 	bool iniciarCadastro();
+	bool iniciarLogin();
 private:
 	std::fstream login;
 	Texto texto;
@@ -27,10 +30,15 @@ private:
 	bool bUsuario = false, bSenha1 = false, bSenha2 = false, inputInicio = false;
 	std::string user = "", sn1 = "", sn2 = "";
 
+	//Input login
+	bool lUser = false, lSenha = true, lExiste = false;
+	Usuario logando;
+
 	int t = 10;
 
 	//controle de lista
-	//ListaUsuario<Usuario> * listUser = new ListaUsuario<Usuario>;
-	Usuario * userDude;
+	list<Usuario> listaUsuario;
+	Usuario* uUsuario, fimLista, aux, *cadastroUsuario;
+	bool usuarioRepetido = false;
 };
 

@@ -1,4 +1,5 @@
-﻿  SistemaLogin.cpp
-c:\users\andrellprado\documents\github\trabalho-do-grau-a\andre\libunicornio-master\projetos\trab-abp\sistemalogin.cpp(168): warning C4715: 'SistemaLogin::iniciarCadastro': nem todos os caminhos de controle retornam um valor
-  base.vcxproj -> C:\Users\AndreLLPrado\Documents\GitHub\Trabalho-do-Grau-A\Andre\libUnicornio-master\projetos\Trab-ABP\bin\base-debug.exe
-  base.vcxproj -> C:\Users\AndreLLPrado\Documents\GitHub\Trabalho-do-Grau-A\Andre\libUnicornio-master\projetos\Trab-ABP\bin\base-debug.pdb (Full PDB)
+﻿cl : Linha de comando warning D9035: opção 'Gm' foi preterida e será removida em uma versão futura
+  SistemaLogin.cpp
+C:\Users\pc-casa\Documents\GitHub\Trabalho-do-Grau-A\Andre\libUnicornio-master\projetos\Trab-ABP\SistemaLogin.cpp(280): warning C4715: 'SistemaLogin::iniciarLogin': nem todos os caminhos de controle retornam um valor
+C:\Users\pc-casa\Documents\GitHub\Trabalho-do-Grau-A\Andre\libUnicornio-master\projetos\Trab-ABP\SistemaLogin.cpp(198): warning C4715: 'SistemaLogin::iniciarCadastro': nem todos os caminhos de controle retornam um valor
+  base.vcxproj -> C:\Users\pc-casa\Documents\GitHub\Trabalho-do-Grau-A\Andre\libUnicornio-master\projetos\Trab-ABP\bin\base-debug.exe
