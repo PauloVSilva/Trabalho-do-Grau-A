@@ -23,6 +23,10 @@ public:
 
 	void mover();
 
+	virtual int getColisaoX() { return x; }
+	virtual int getColisaoY() { return y; }
+	virtual Sprite getSprite() { return sprite; }
+
 protected:
 	int getPosX() { return xInicial; }
 	int getPosY() { return yInicial; }

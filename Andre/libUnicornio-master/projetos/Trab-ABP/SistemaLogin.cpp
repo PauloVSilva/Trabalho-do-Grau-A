@@ -2,15 +2,15 @@
 
 
 
-SistemaLogin::SistemaLogin()
-{
-	
-}
-
-
-SistemaLogin::~SistemaLogin()
-{
-}
+//SistemaLogin::SistemaLogin()
+//{
+//	
+//}
+//
+//
+//SistemaLogin::~SistemaLogin()
+//{
+//}
 
 bool SistemaLogin::inicializar() {
 	arq.open("../assets/login.dat", std::ios::binary | std::ios::in);
@@ -22,6 +22,7 @@ bool SistemaLogin::inicializar() {
 			while (!arq.eof())
 			{
 				uUsuario = new Usuario;
+				//uUsuario = nullptr;
 				//ler Usuario
 				arq.read(reinterpret_cast<char*>(&sTokken), sizeof(sTokken));
 				uUsuario->nome = sTokken;
@@ -65,10 +66,13 @@ bool SistemaLogin::cadastrar(std::string user, std::string senha) {
 bool SistemaLogin::iniciarCadastro()
 {
 	cadastroUsuario = new Usuario;
+	//cadastroUsuario = nullptr;
 
 	tEscrita.setFonte("Fonte1");
 	verleho.set(255, 0, 0, 255);
 	tEscrita.setCor(verleho);
+
+	gDebug.erro("Se errar o login ou se informar um usuario nao existir o jogo vai crashar");
 
 	if (inputInicio == false) {
 		input.inicializar();
@@ -79,6 +83,7 @@ bool SistemaLogin::iniciarCadastro()
 		//configurar texto
 		tEscrita.setString("Iforme o seu nome de Usuario:");
 		tEscrita.desenhar(gJanela.getLargura() / 2, (gJanela.getAltura() / 2) - 40);
+
 		//inicializar Input
 		input.atualizar();
 		input.desenhar();
@@ -257,8 +262,6 @@ bool SistemaLogin::iniciarLogin()
 					inputInicio = false;
 					iniciarLogin();
 				}
-
-				
 			}
 		/*if (lUser == true) {
 			if (lExiste == false) {
@@ -299,6 +302,7 @@ bool SistemaLogin::iniciarLogin()
 			else {
 				gDebug.erro("Senha incorreta!");
 				lSenha = false;
+				inputInicio = false;
 				iniciarLogin();
 				return false;
 			}
@@ -312,12 +316,14 @@ bool SistemaLogin::percorrerUsuario(std::string &alvo, list<Usuario> &fLista)
 		logando = fLista.front();
 		return true;
 	}
-	else if (fLista.front().nome == fimLista.nome) {
+	else if (fLista.front().nome == fimLista.nome && fLista.front().nome != alvo) {
+		gDebug.erro("xalabaiah");
 		lExiste = false;
 		return false;
 	}
 
 	else {
+
 		aux = fLista.front();
 		fLista.pop_front();
 		fLista.push_back(aux);

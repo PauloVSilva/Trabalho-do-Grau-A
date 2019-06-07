@@ -1,16 +1,38 @@
-font 
+fontes
 Bearskin.otf site:1001freefonts
+OldExcalibur site:1001freefonts
 
-sprite
+sprites
 Knight assetsProf.Raphael
 Mage   assetsProf.Raphael
 Rouge  assetsProf.Raphael
 Ghost  googleImagens
 Sword  Bruno
 
-fundo
-FundoJogo Bruno
-FundoMenu Bruno
+botoes
+botoes do menu principal Paulo
+botoes do menu de login  Andre
 
-music
+fundo
+FundoJogo Paulo
+FundoMenu Paulo
+
+programacao
+preparacao do projeto             Bruno
+montagem da base do projeto       Bruno
+animacao                          Andre
+movimentacao                      Andre
+especiais                         Andre
+troca de personagem               Andre
+colisoes                          Andre
+menus e suas funcionalidades      Andre
+sistema de usuario, login e senha Andre
+
+musicas
 epic site:bensound
+
+software
+Microsoft Visual Studio 2017/2019
+
+Biblioteca
+LibUnicornio

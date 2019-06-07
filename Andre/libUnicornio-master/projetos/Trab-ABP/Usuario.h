@@ -7,4 +7,5 @@ public:
 	~Usuario(){}
 
 	std::string nome = "", senha = "";
+	int pontos;
 };

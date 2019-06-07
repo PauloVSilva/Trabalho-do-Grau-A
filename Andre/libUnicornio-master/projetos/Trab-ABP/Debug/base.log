@@ -1,18 +1,12 @@
-﻿  SistemaLogin.cpp
+﻿cl : Linha de comando warning D9035: opção 'Gm' foi preterida e será removida em uma versão futura
   Jogo.cpp
-c:\users\andrellprado\documents\github\trabalho-do-grau-a\andre\libunicornio-master\projetos\trab-abp\jogo.cpp(60): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
-c:\users\andrellprado\documents\github\trabalho-do-grau-a\andre\libunicornio-master\projetos\trab-abp\jogo.cpp(64): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
-c:\users\andrellprado\documents\github\trabalho-do-grau-a\andre\libunicornio-master\projetos\trab-abp\jogo.cpp(68): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
-c:\users\andrellprado\documents\github\trabalho-do-grau-a\andre\libunicornio-master\projetos\trab-abp\jogo.cpp(72): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
-c:\users\andrellprado\documents\github\trabalho-do-grau-a\andre\libunicornio-master\projetos\trab-abp\jogo.cpp(76): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
-c:\users\andrellprado\documents\github\trabalho-do-grau-a\andre\libunicornio-master\projetos\trab-abp\jogo.cpp(80): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
-c:\users\andrellprado\documents\github\trabalho-do-grau-a\andre\libunicornio-master\projetos\trab-abp\jogo.cpp(84): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
-  Gerando Código...
-c:\users\andrellprado\documents\github\trabalho-do-grau-a\andre\libunicornio-master\projetos\trab-abp\sistemalogin.cpp(328): warning C4715: 'SistemaLogin::percorrerUsuario': nem todos os caminhos de controle retornam um valor
-c:\users\andrellprado\documents\github\trabalho-do-grau-a\andre\libunicornio-master\projetos\trab-abp\sistemalogin.cpp(198): warning C4715: 'SistemaLogin::iniciarCadastro': nem todos os caminhos de controle retornam um valor
-c:\users\andrellprado\documents\github\trabalho-do-grau-a\andre\libunicornio-master\projetos\trab-abp\sistemalogin.cpp(307): warning C4715: 'SistemaLogin::iniciarLogin': nem todos os caminhos de controle retornam um valor
-  Compilando...
-  main.cpp
-  Gerando Código...
-  base.vcxproj -> C:\Users\AndreLLPrado\Documents\GitHub\Trabalho-do-Grau-A\Andre\libUnicornio-master\projetos\Trab-ABP\bin\base-debug.exe
-  base.vcxproj -> C:\Users\AndreLLPrado\Documents\GitHub\Trabalho-do-Grau-A\Andre\libUnicornio-master\projetos\Trab-ABP\bin\base-debug.pdb (Full PDB)
+C:\Users\pc-casa\Documents\GitHub\Trabalho-do-Grau-A\Andre\libUnicornio-master\projetos\Trab-ABP\Jogo.cpp(62): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+C:\Users\pc-casa\Documents\GitHub\Trabalho-do-Grau-A\Andre\libUnicornio-master\projetos\Trab-ABP\Jogo.cpp(66): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+C:\Users\pc-casa\Documents\GitHub\Trabalho-do-Grau-A\Andre\libUnicornio-master\projetos\Trab-ABP\Jogo.cpp(70): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+C:\Users\pc-casa\Documents\GitHub\Trabalho-do-Grau-A\Andre\libUnicornio-master\projetos\Trab-ABP\Jogo.cpp(74): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+C:\Users\pc-casa\Documents\GitHub\Trabalho-do-Grau-A\Andre\libUnicornio-master\projetos\Trab-ABP\Jogo.cpp(78): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+C:\Users\pc-casa\Documents\GitHub\Trabalho-do-Grau-A\Andre\libUnicornio-master\projetos\Trab-ABP\Jogo.cpp(82): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+C:\Users\pc-casa\Documents\GitHub\Trabalho-do-Grau-A\Andre\libUnicornio-master\projetos\Trab-ABP\Jogo.cpp(86): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+C:\Users\pc-casa\Documents\GitHub\Trabalho-do-Grau-A\Andre\libUnicornio-master\projetos\Trab-ABP\Jogo.cpp(90): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+C:\Users\pc-casa\Documents\GitHub\Trabalho-do-Grau-A\Andre\libUnicornio-master\projetos\Trab-ABP\Jogo.cpp(242): warning C4129: 'N': sequência de escape de caractere não reconhecida
+  base.vcxproj -> C:\Users\pc-casa\Documents\GitHub\Trabalho-do-Grau-A\Andre\libUnicornio-master\projetos\Trab-ABP\bin\base-debug.exe

@@ -1,18 +1,19 @@
 #include "Jogo.h"
 #include"PersoBase.h"
 
-Jogo::Jogo()
-{
-}
-
-Jogo::~Jogo()
-{
-}
+//Jogo::Jogo()
+//{
+//}
+//
+//Jogo::~Jogo()
+//{
+//}
 
 void Jogo::inicializar()
 {
 	uniInicializar(800, 600, false);
-	telaAtual = tInicial;
+	//telaAtual = tInicial;
+	pilhamenu.push(tInicial);
 	sysLogin.inicializar();
 
 	if(!sysLogin.inicializar()){
@@ -46,6 +47,7 @@ void Jogo::inicializar()
 	
 	//carregar fonte
 	gRecursos.carregarFonte("Fonte1","../assets/Fonts/Bearskin.otf", 32);
+	gRecursos.carregarFonte("Fonte2", "../assets/Fonts/OldExcalibur.otf", 28);
 
 	//carregar fundos
 	gRecursos.carregarSpriteSheet("fundoMenu", "../assets/fundos/Menu.png");
@@ -83,6 +85,10 @@ void Jogo::inicializar()
 	bSair2.setSpriteSheet("botaoSair2");
 	bSair2.setPos(gJanela.getLargura() / 2, (gJanela.getAltura() / 2) + 120);
 
+	gRecursos.carregarSpriteSheet("botaoVoltar", "../assets/Button/botaoVoltar.png", 3);
+	bVoltar.setSpriteSheet("botaoVoltar");
+	bVoltar.setPos(gJanela.getLargura() / 2, (gJanela.getAltura() / 2) + 250);
+
 	//carregar sprite extra
 
 	gRecursos.carregarSpriteSheet("Ghost", "../assets/spriteSheets/Ghost.png", 4, 3);
@@ -91,6 +97,8 @@ void Jogo::inicializar()
 	// carregar musicas
 	//gRecursos.carregarMusica("Epic", "../assets/music/Epic.mp3");
 	
+	//setando cor para texto
+	Branco.set(255,255,255,255);
 
 	//carregar Personagens
 
@@ -100,7 +108,7 @@ void Jogo::inicializar()
 
 	base[0]->setSpriteSheet("Knight", "../assets/spriteSheets/Knight.png", 4, 4);
 	
-	base[0]->setPos(gJanela.getLargura() / 2, gJanela.getAltura() / 2);
+	base[0]->setPos((gJanela.getLargura() / 2) - 25, gJanela.getAltura() / 2);
 	base[0]->desenhar((gJanela.getLargura() / 2) + 100, gJanela.getAltura() / 2);
 
 	base[1]->setSpriteSheet("Mage", "../assets/spriteSheets/Mage.png", 4, 4);
@@ -110,7 +118,7 @@ void Jogo::inicializar()
 
 	base[2]->setSpriteSheet("Rouge", "../assets/spriteSheets/Rouge.png", 4, 4);
 
-	base[2]->setPos(gJanela.getLargura() / 2, gJanela.getAltura() / 2);
+	base[2]->setPos((gJanela.getLargura() / 2) + 25, gJanela.getAltura() / 2);
 	base[2]->desenhar(gJanela.getLargura() / 2, gJanela.getAltura() / 2);
 
 	per = 0;
@@ -125,6 +133,31 @@ void Jogo::finalizar()
 	uniFinalizar();
 }
 
+void Jogo::testarColisao()
+{
+	//colisao com as boradas verticais da tela
+	if (base[per]->getColisaoY() <= 10) {
+		base[per]->setPos(base[per]->getColisaoX(),10);
+	}
+	if (base[per]->getColisaoY() >= gJanela.getAltura() -10) {
+		base[per]->setPos(base[per]->getColisaoX(), gJanela.getAltura() -10);
+	}
+	//colisao com as bordas horizontais da tela
+	if (base[per]->getColisaoX() >= gJanela.getLargura() - 120) {
+		base[per]->setPos(gJanela.getLargura() - 120, base[per]->getColisaoY());
+	}
+	if (base[per]->getColisaoX() <= 120) {
+		base[per]->setPos(120, base[per]->getColisaoY());
+	}
+
+	//nao ta funcionando
+	/*if (uniTestarColisaoSpriteComSprite(base[0]->getSprite(), base[0]->getColisaoX(), base[0]->getColisaoY(), 0,
+		base[1]->getSprite(), base[1]->getColisaoX(), base[1]->getColisaoY(), 0)) {
+		base[0]->setPos(base[0]->getColisaoX(), base[0]->getColisaoY());
+		base[1]->setPos(base[1]->getColisaoX(), base[1]->getColisaoY());
+	}*/
+}
+
 void Jogo::executar()
 {
 	while(!gTeclado.soltou[TECLA_ESC] && !gEventos.sair && getSair())
@@ -136,7 +169,8 @@ void Jogo::executar()
 		//	Seu código vem aqui!
 		//	...
 		//tela vai ser executadas de cada vez 
-		switch (telaAtual)
+		
+		switch (pilhamenu.top())
 		{
 		case tInicial: telaInicial();
 			break;
@@ -149,6 +183,10 @@ void Jogo::executar()
 		case tCadastrar: telaCadastrar();
 			break;
 		case tLogin: telaLogin();
+			break;
+		case tInstrucoes: telaInstrocoes();
+			break;
+		case tCreditos: telaCreditos();
 			break;
 		}
 		
@@ -175,11 +213,58 @@ void Jogo::telaMenu()
 	bSair.desenhar();
 
 	if (bJogar.estaClicado()) {
-		telaAtual = tJogo;
+		//telaAtual = tJogo;
+		pilhamenu.push(tJogo);
 	}
 	if (bSair.estaClicado()) {
 		saida = false;
 		
+	}
+	if (bInstrucoes.estaClicado()) {
+		pilhamenu.push(tInstrucoes);
+	}
+	if (bCreditos.estaClicado()) {
+		pilhamenu.push(tCreditos);
+	}
+}
+
+void Jogo::telaInstrocoes()
+{
+	fundoJogar.desenhar(gJanela.getLargura() / 2, gJanela.getAltura() / 2);
+	bVoltar.atualizar();
+	bVoltar.desenhar();
+
+	txtCreditos.setCor(Branco);
+	txtCreditos.setFonte("Fonte2");
+	txtCreditos.setString("Intrucoes:\n"
+		"Mover para cima - SETA PARA CIMA ou W\n"
+		"Mover para baixo - SETA PARA BAIXO ou S\n"
+		"Mover para esquerda - SETA PARA ESQUERDA ou A\N"
+		"Mover para direita - SETA PARA DIREITA ou D\n"
+		"Especial - tecla ESPACO\n"
+		"TROCA DE PERSONAGEM:\n"
+		"Guerreiro - TECLA 1\n"
+		"Mago - TECLA 2\n"
+		"Ladino  - TECLA 3\n");
+
+	txtCreditos.desenhar(gJanela.getLargura() / 2, 200);
+
+	if (bVoltar.estaClicado()) {
+		pilhamenu.pop();
+	}
+}
+
+void Jogo::telaCreditos()
+{
+	fundoJogar.desenhar(gJanela.getLargura() / 2, gJanela.getAltura() / 2);
+	bVoltar.atualizar();
+	bVoltar.desenhar();
+
+	
+	
+
+	if (bVoltar.estaClicado()) {
+		pilhamenu.pop();
 	}
 }
 
@@ -195,6 +280,8 @@ void Jogo::telaJogo()
 	base[2]->atualizar();
 
 	base[per]->mover();
+
+	testarColisao();
 
 	//trocar personagem
 	if (gTeclado.pressionou[TECLA_1]) {
@@ -214,6 +301,16 @@ void Jogo::telaJogo()
 	if (!gTeclado.segurando[TECLA_ESPACO]) {
 		base[per]->resetarVelocidade();
 	}
+	//gRecursos.
+	//indicador de personagem
+	if (per == 0)
+		gGraficos.desenharTexto("Controlando Guerreiro",80, 30, 255, 0, 0, 255);
+
+	if (per == 1)
+		gGraficos.desenharTexto("Controlando Mago", 80, 30, 255, 0, 0, 255);
+
+	if (per == 2)
+		gGraficos.desenharTexto("Controlando Ladino", 80, 30, 255, 0, 0, 255);
 }
 
 void Jogo::telaFinal()
@@ -224,7 +321,8 @@ void Jogo::telaLogin()
 {
 	sysLogin.iniciarLogin();
 	if (sysLogin.getLoginAprovado() == true) {
-		telaAtual = tMenu;
+		//telaAtual = tMenu;
+		pilhamenu.push(tMenu);
 	}
 }
 
@@ -232,7 +330,8 @@ void Jogo::telaCadastrar()
 {
 	sysLogin.iniciarCadastro();
 	if (sysLogin.iniciarCadastro() == true) {
-		telaAtual = tMenu;
+		//telaAtual = tMenu;
+		pilhamenu.push(tMenu);
 	}
 }
 
@@ -248,11 +347,13 @@ void Jogo::telaInicial()
 	bSair2.desenhar();
 
 	if (bLogar.estaClicado()) {
-		telaAtual = tLogin;
+		//telaAtual = tLogin;
+		pilhamenu.push(tLogin);
 	}
 
 	if (bCdastrar.estaClicado()) {
-		telaAtual = tCadastrar;
+		//telaAtual = tCadastrar;
+		pilhamenu.push(tCadastrar);
 	}
 
 	if (bSair2.estaClicado()) {

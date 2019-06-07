@@ -7,8 +7,8 @@
 class SistemaLogin
 {
 public:
-	SistemaLogin();
-	~SistemaLogin();
+	SistemaLogin() {};
+	~SistemaLogin() {};
 
 	bool inicializar();
 	bool cadastrar(std::string user, std::string senha);
