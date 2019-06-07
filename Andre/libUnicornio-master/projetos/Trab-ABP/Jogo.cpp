@@ -223,7 +223,7 @@ void Jogo::telaFinal()
 void Jogo::telaLogin()
 {
 	sysLogin.iniciarLogin();
-	if (sysLogin.iniciarLogin() == true) {
+	if (sysLogin.getLoginAprovado() == true) {
 		telaAtual = tMenu;
 	}
 }

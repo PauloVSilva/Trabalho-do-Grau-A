@@ -224,10 +224,15 @@ bool SistemaLogin::iniciarLogin()
 
 		if(input.getTexto() != "")
 			if (gTeclado.pressionou[TECLA_ENTER]) {
+
+				test1 = input.getTexto();
+				input.finalizar();
+
 				if (listaUsuario.front().nome == input.getTexto()) {
 				lExiste = true;
 				}
-				while (fimLista.nome != listaUsuario.front().nome) {
+
+				/*while (fimLista.nome != listaUsuario.front().nome) {
 					if (listaUsuario.front().nome == input.getTexto()) {
 						lExiste = true;
 						break;
@@ -235,10 +240,27 @@ bool SistemaLogin::iniciarLogin()
 					aux = listaUsuario.front();
 					listaUsuario.pop_front();
 					listaUsuario.push_back(aux);
+				}*/
+				
+				if (percorrerUsuario(test1, listaUsuario)) {
+					//encontrou usuario
+					lUser = true;
+					lSenha = false;
+					inputInicio = false;
+					//logando = listaUsuario.front();
+
 				}
-				lUser = true;
+				else {
+					//nao encontrou
+					gDebug.erro("Usuario nao encontrado!<3");
+					//lUser = false;
+					inputInicio = false;
+					iniciarLogin();
+				}
+
+				
 			}
-		if (lUser == true) {
+		/*if (lUser == true) {
 			if (lExiste == false) {
 				gDebug.erro("Usuario nao existe!");
 				inputInicio = false;
@@ -251,7 +273,7 @@ bool SistemaLogin::iniciarLogin()
 				input.finalizar();
 				inputInicio = false;
 			}
-		}	
+		}	*/
 	}
 
 	if (lSenha == false) {//verificar senha
@@ -266,15 +288,41 @@ bool SistemaLogin::iniciarLogin()
 		input.desenhar();
 
 		if (gTeclado.pressionou[TECLA_ENTER] && input.getTexto() != "") {
-			if (logando.senha == input.getTexto()) {
+			test2 = input.getTexto();
+			input.finalizar();
+			if (logando.senha == test2) {
 				lSenha = true;
-				input.finalizar();
+				logouEssaMerda = true;
+				gGraficos.desenharTexto("Logando", 400, 300, 255,255,255, 255);
 				return true;
 			}
 			else {
 				gDebug.erro("Senha incorreta!");
-				//return false;
+				lSenha = false;
+				iniciarLogin();
+				return false;
 			}
 		}
 	}
+}
+bool SistemaLogin::percorrerUsuario(std::string &alvo, list<Usuario> &fLista)
+{
+	if (listaUsuario.front().nome == alvo) {
+		lExiste = true;
+		logando = fLista.front();
+		return true;
+	}
+	else if (fLista.front().nome == fimLista.nome) {
+		lExiste = false;
+		return false;
+	}
+
+	else {
+		aux = fLista.front();
+		fLista.pop_front();
+		fLista.push_back(aux);
+		percorrerUsuario(alvo, fLista);
+	}
+
+	
 }

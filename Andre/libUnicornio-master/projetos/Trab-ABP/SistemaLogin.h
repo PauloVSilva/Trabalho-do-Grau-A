@@ -17,6 +17,10 @@ public:
 
 	bool iniciarCadastro();
 	bool iniciarLogin();
+
+	bool percorrerUsuario(std::string &alvo, list<Usuario> &fLista);
+
+	bool getLoginAprovado() { return logouEssaMerda; }
 private:
 	std::fstream login;
 	Texto texto;
@@ -33,6 +37,8 @@ private:
 	//Input login
 	bool lUser = false, lSenha = true, lExiste = false;
 	Usuario logando;
+	std::string test1, test2;
+	bool logouEssaMerda = false;
 
 	int t = 10;
 
