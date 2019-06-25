@@ -10,7 +10,7 @@
 #include"Inimigo.h"
 #include<stack>
 
-enum Tela {tMenu,tJogo,tFinal,tLogin,tCadastrar,tInicial,tInstrucoes,tCreditos, tPause};
+enum Tela {tMenu,tJogo,tFinal,tLogin,tCadastrar,tInicial,tInstrucoes,tCreditos, tPause, tRanking};
 
 class Jogo
 {
@@ -50,7 +50,7 @@ private:
 	SistemaRanking sysRanking;
 
 	//criar botoes
-	BotaoSprite bJogar, bSair, bCreditos, bInstrucoes, bLogar, bCdastrar, bSair2, bVoltar;
+	BotaoSprite bJogar, bSair, bCreditos, bInstrucoes, bLogar, bCdastrar, bSair2, bVoltar, bRanking;
 
 	//metodos de telas
 	void telaMenu();
@@ -62,6 +62,7 @@ private:
 	void telaInstrocoes();
 	void telaCreditos();
 	void telaPause();
+	void telaRanking();
 
 	//texto creditos
 	Texto txtCreditos;

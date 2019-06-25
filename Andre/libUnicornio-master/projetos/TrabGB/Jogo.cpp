@@ -92,6 +92,10 @@ void Jogo::inicializar()
 	bVoltar.setSpriteSheet("botaoVoltar");
 	bVoltar.setPos(gJanela.getLargura() / 2, (gJanela.getAltura() / 2) + 250);
 
+	gRecursos.carregarSpriteSheet("botaoRanking", "../assets/Button/botaoRanking.png", 3);
+	bRanking.setSpriteSheet("botaoRanking");
+	bRanking.setPos((gJanela.getLargura() / 2) + 176, (gJanela.getAltura() / 2) + 222);
+
 	//carregar sprite extra
 
 	gRecursos.carregarSpriteSheet("Ghost", "../assets/spriteSheets/Ghost.png", 4, 3);
@@ -143,6 +147,7 @@ void Jogo::finalizar()
 {
 	//	O resto da finalização vem aqui (provavelmente, em ordem inversa a inicialização)!
 	//	...
+	
 	gRecursos.descarregarTodasMusicas();
 	gRecursos.descarregarTudo();
 	uniFinalizar();
@@ -205,6 +210,8 @@ void Jogo::executar()
 			break;
 		case tPause: telaPause();
 			break;
+		case tRanking: telaRanking();
+			break;
 		}
 		
 		
@@ -232,12 +239,16 @@ void Jogo::telaMenu()
 	bSair.atualizar();
 	bSair.desenhar();
 
+	bRanking.atualizar();
+	bRanking.desenhar();
+
 	if (bJogar.estaClicado()) {
 		//telaAtual = tJogo;
 		pilhamenu.push(tJogo);
 		gMusica.parar();
 	}
 	if (bSair.estaClicado()) {
+		sysRanking.salvar(sysLogin.getUsuario());
 		saida = false;
 		
 	}
@@ -246,6 +257,9 @@ void Jogo::telaMenu()
 	}
 	if (bCreditos.estaClicado()) {
 		pilhamenu.push(tCreditos);
+	}
+	if (bRanking.estaClicado()) {
+		pilhamenu.push(tRanking);
 	}
 }
 
@@ -419,4 +433,16 @@ void Jogo::telaPause()
 		pilhamenu.pop();
 	}
 	gMusica.parar();
+}
+
+void Jogo::telaRanking()
+{
+	fundoJogar.desenhar(gJanela.getLargura() / 2, gJanela.getAltura() / 2);
+
+	bVoltar.atualizar();
+	bVoltar.desenhar();
+
+	if (bVoltar.estaClicado() || gTeclado.pressionou[TECLA_ESC]) {
+		pilhamenu.pop();
+	}
 }
