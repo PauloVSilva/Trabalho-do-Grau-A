@@ -1,9 +1,9 @@
-﻿  SistemaRanking.cpp
+﻿  main.cpp
+  SistemaRanking.cpp
   SistemaLogin.cpp
   Rouge.cpp
   PersoBase.cpp
 c:\users\andrellprado\documents\github\trabalho-do-grau-a\andre\libunicornio-master\projetos\trabgb\persobase.cpp(9): warning C4305: '=': truncamento de 'int' para 'bool'
-  main.cpp
   Mage.cpp
   Knight.cpp
   Jogo.cpp
@@ -22,11 +22,11 @@ c:\users\andrellprado\documents\github\trabalho-do-grau-a\andre\libunicornio-mas
 c:\users\andrellprado\documents\github\trabalho-do-grau-a\andre\libunicornio-master\projetos\trabgb\inputtexto.cpp(114): warning C4244: '+=': conversão de 'float' para 'Sint16', possível perda de dados
 c:\users\andrellprado\documents\github\trabalho-do-grau-a\andre\libunicornio-master\projetos\trabgb\inputtexto.cpp(125): warning C4244: '+=': conversão de 'float' para 'int', possível perda de dados
   Inimigo.cpp
-  CarregadorAssets.cpp
   Gerando Código...
 c:\users\andrellprado\documents\github\trabalho-do-grau-a\andre\libunicornio-master\projetos\trabgb\sistemalogin.cpp(334): warning C4715: 'SistemaLogin::percorrerUsuario': nem todos os caminhos de controle retornam um valor
 c:\users\andrellprado\documents\github\trabalho-do-grau-a\andre\libunicornio-master\projetos\trabgb\sistemalogin.cpp(311): warning C4715: 'SistemaLogin::iniciarLogin': nem todos os caminhos de controle retornam um valor
 c:\users\andrellprado\documents\github\trabalho-do-grau-a\andre\libunicornio-master\projetos\trabgb\sistemalogin.cpp(203): warning C4715: 'SistemaLogin::iniciarCadastro': nem todos os caminhos de controle retornam um valor
+  LINK : C:\Users\AndreLLPrado\Documents\GitHub\Trabalho-do-Grau-A\Andre\libUnicornio-master\projetos\TrabGB\bin\base-debug.exe não encontrado ou não compilado pelo o último link incremental; executando link completo
 CarregadorAssets.obj : warning LNK4075: ignorando '/EDITANDCONTINUE' devido a especificação '/SAFESEH'
 libUnicornio_d.lib(Audio.obj) : warning LNK4099: PDB 'libUnicornio-Windows.pdb' não foi encontrado 'libUnicornio_d.lib(Audio.obj)' ou no 'C:\Users\AndreLLPrado\Documents\GitHub\Trabalho-do-Grau-A\Andre\libUnicornio-master\projetos\TrabGB\bin\libUnicornio-Windows.pdb'; vinculando objeto quando quando sem nenhuma informação de depuração
 libUnicornio_d.lib(GerenciadorDeMusica.obj) : warning LNK4099: PDB 'libUnicornio-Windows.pdb' não foi encontrado 'libUnicornio_d.lib(GerenciadorDeMusica.obj)' ou no 'C:\Users\AndreLLPrado\Documents\GitHub\Trabalho-do-Grau-A\Andre\libUnicornio-master\projetos\TrabGB\bin\libUnicornio-Windows.pdb'; vinculando objeto quando quando sem nenhuma informação de depuração
