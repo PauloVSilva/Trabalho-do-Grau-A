@@ -16,7 +16,7 @@ public:
 
 private:
 	std::fstream arq;
-	Usuario usuario;
+	Usuario usuario, *usuario2;
 	std::string test;
 
 	//leitura

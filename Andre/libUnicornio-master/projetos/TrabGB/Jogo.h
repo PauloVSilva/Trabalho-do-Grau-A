@@ -64,6 +64,9 @@ private:
 	void telaPause();
 	void telaRanking();
 
+	//
+	bool confirma = false;
+
 	//texto creditos
 	Texto txtCreditos;
 	Cor Branco;

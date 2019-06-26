@@ -44,7 +44,12 @@ void Jogo::inicializar()
 		gDebug.erro("Carregador de login nao abriu!");
 	}
 
-	sysRanking.inicializar();
+	if (sysRanking.inicializar()) {
+
+	}
+	else {
+		gDebug.erro("Sistema de ranking nao inicionu!");
+	}
 	
 	//carregar fonte
 	gRecursos.carregarFonte("Fonte1","../assets/Fonts/Bearskin.otf", 32);
@@ -248,8 +253,8 @@ void Jogo::telaMenu()
 		gMusica.parar();
 	}
 	if (bSair.estaClicado()) {
-		sysRanking.salvar(sysLogin.getUsuario());
-		saida = false;
+		//sysRanking.salvar(sysLogin.getUsuario());
+		confirma = true;
 		
 	}
 	if (bInstrucoes.estaClicado()) {
@@ -260,6 +265,21 @@ void Jogo::telaMenu()
 	}
 	if (bRanking.estaClicado()) {
 		pilhamenu.push(tRanking);
+	}
+
+	/*if (gTeclado.segurando[TECLA_ESC]) {
+		confirma = true;
+	}*/
+
+	if (confirma == true) {
+		gGraficos.desenharTexto("Tem certesa que deseja sair?\nENTER para sair\nESPACO para voltar",gJanela.getLargura() / 2, gJanela.getAltura() / 2);
+		if (gTeclado.pressionou[TECLA_ESPACO]) {
+			confirma = false;
+		}
+		if (gTeclado.pressionou[TECLA_ENTER]) {
+			sysRanking.salvar(sysLogin.getUsuario());
+			saida = false;
+		}
 	}
 }
 
@@ -284,7 +304,7 @@ void Jogo::telaInstrocoes()
 
 	txtCreditos.desenhar(gJanela.getLargura() / 2, 200);
 
-	if (bVoltar.estaClicado()) {
+	if (bVoltar.estaClicado() || gTeclado.pressionou[TECLA_ESC]) {
 		pilhamenu.pop();
 	}
 }
@@ -298,7 +318,7 @@ void Jogo::telaCreditos()
 	
 	
 
-	if (bVoltar.estaClicado()) {
+	if (bVoltar.estaClicado() || gTeclado.pressionou[TECLA_ESC]) {
 		pilhamenu.pop();
 	}
 }
@@ -310,6 +330,9 @@ void Jogo::telaJogo()
 		gMusica.tocar("Epic", true);
 
 	int xInim, yInim;
+	
+	/*BRUNO TENTA IMPLEMENTAR O INIMIGO*/
+
 
 	/*if (!musica.estaCarregado())
 		musica.carregar("Epic", true);*/
@@ -348,7 +371,7 @@ void Jogo::telaJogo()
 	if (!gTeclado.segurando[TECLA_ESPACO]) {
 		base[per]->resetarVelocidade();
 	}
-	//gRecursos.
+	
 	//indicador de personagem
 	if (per == 0)
 		gGraficos.desenharTexto("Controlando Guerreiro",80, 30, 255, 0, 0, 255);
@@ -437,6 +460,7 @@ void Jogo::telaPause()
 
 void Jogo::telaRanking()
 {
+	gMusica.parar();
 	fundoJogar.desenhar(gJanela.getLargura() / 2, gJanela.getAltura() / 2);
 
 	bVoltar.atualizar();
@@ -445,4 +469,6 @@ void Jogo::telaRanking()
 	if (bVoltar.estaClicado() || gTeclado.pressionou[TECLA_ESC]) {
 		pilhamenu.pop();
 	}
+
+	sysRanking.prepararRanking();//nao esta funcionando
 }

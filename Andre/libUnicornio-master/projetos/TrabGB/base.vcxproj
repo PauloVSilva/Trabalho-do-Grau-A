@@ -102,6 +102,8 @@
     <ClCompile Include="CarregadorAssets.cpp" />
     <ClCompile Include="Inimigo.cpp" />
     <ClCompile Include="InputTexto.cpp" />
+    <ClCompile Include="Inventario.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="Jogo.cpp" />
     <ClCompile Include="Knight.cpp" />
     <ClCompile Include="Mage.cpp" />
@@ -115,6 +117,8 @@
     <ClInclude Include="CarregadorAssets.h" />
     <ClInclude Include="Inimigo.h" />
     <ClInclude Include="InputTexto.h" />
+    <ClInclude Include="Inventario.h" />
+    <ClInclude Include="Item.h" />
     <ClInclude Include="Jogo.h" />
     <ClInclude Include="Knight.h" />
     <ClInclude Include="Mage.h" />

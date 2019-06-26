@@ -13,25 +13,26 @@
 
 bool SistemaRanking::inicializar()
 {
-	arq.open("../assets/ranking.txt", std::ios::in);
+	arq.open("../assets/ranking.txt", std::ios::in);//abre o arquivo para leitura
 
-	if (arq.is_open()) {
+	if (arq.is_open()) {//verifica se o arquivo abriu
+		usuario2 = new Usuario;
 
-		while (!arq.eof()) {
-			arq >> sTokken;
-			nome = sTokken;
+		while (!arq.eof()) {//while so termina quando o arquivo chegar no fim
+			arq >> sTokken;//le o arquivo
+			nome = sTokken;//passa para nome
 
 			if (sTokken == nome) {
-				arq >> sTokken;
-				if (sTokken == " Pontos: ") {
-					arq >> iTokken;
+				arq >> sTokken;//le novamente o arquivo
+				if (sTokken == " Pontos: ") {//compara com a imformacao esperada
+					arq >> iTokken;//le o arquivo dessa vez com um Tokken para interiro
 
-					if (iTokken > pontos) {
-						pontos = iTokken;
+					if (iTokken > pontos) {//verifica se tokken e maior que pontos se sim
+						pontos = iTokken;//substitui o valor original de pontos
 					}
-					usuario.nome = nome;
-					usuario.pontos = pontos;
-					filaUsuario.push(usuario);
+					usuario2->nome = nome; //atribui nome para um obj da classe usuario
+					usuario2->pontos = pontos;//atribui pontos para um obj da classe usuario
+					filaUsuario.push(*usuario2);//adiciona esse usuario na fila
 				}
 			}
 		}
@@ -66,12 +67,15 @@ bool SistemaRanking::salvar(Usuario &u)
 
 void SistemaRanking::prepararRanking()
 {
+	//definir conf. do texto
 	branco.set(255, 255, 255, 255);
 	txtRanking.setFonte("arial");
 	txtRanking.setCor(branco);
 
-	if (!filaUsuario.empty()) {
-		txtRanking.setString(filaUsuario.front().nome + " Pontos: " + std::to_string(filaUsuario.front().pontos));
-		filaUsuario.pop();
+	if (!filaUsuario.empty()) {//se a fila de usuario nao estiver vazia
+		txtRanking.setString(filaUsuario.front().nome + " Pontos: " + std::to_string(filaUsuario.front().pontos));//desenhar score de primeiro da fila(provavelmente tem erro aqui)
+		filaUsuario.pop();//remove o primeiro da fila
 	}
+
+	txtRanking.desenhar(gJanela.getLargura() / 2, gJanela.getAltura() / 2);//nao esta desenhando
 }
