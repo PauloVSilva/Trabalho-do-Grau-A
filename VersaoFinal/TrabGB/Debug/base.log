@@ -1,0 +1,14 @@
+﻿  Jogo.cpp
+c:\users\brunomuniz\desktop\libunicornio-master\projetos\trabgb\jogo.cpp(70): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+c:\users\brunomuniz\desktop\libunicornio-master\projetos\trabgb\jogo.cpp(74): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+c:\users\brunomuniz\desktop\libunicornio-master\projetos\trabgb\jogo.cpp(78): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+c:\users\brunomuniz\desktop\libunicornio-master\projetos\trabgb\jogo.cpp(82): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+c:\users\brunomuniz\desktop\libunicornio-master\projetos\trabgb\jogo.cpp(86): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+c:\users\brunomuniz\desktop\libunicornio-master\projetos\trabgb\jogo.cpp(90): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+c:\users\brunomuniz\desktop\libunicornio-master\projetos\trabgb\jogo.cpp(94): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+c:\users\brunomuniz\desktop\libunicornio-master\projetos\trabgb\jogo.cpp(98): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+c:\users\brunomuniz\desktop\libunicornio-master\projetos\trabgb\jogo.cpp(102): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
+  Inimigo.cpp
+  Gerando Código...
+  base.vcxproj -> C:\Users\BrunoMuniz\Desktop\libUnicornio-master\projetos\TrabGB\bin\base-debug.exe
+  base.vcxproj -> C:\Users\BrunoMuniz\Desktop\libUnicornio-master\projetos\TrabGB\bin\base-debug.pdb (Full PDB)
