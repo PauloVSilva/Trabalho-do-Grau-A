@@ -18,6 +18,7 @@ private:
 	std::fstream arq;
 	Usuario usuario, *usuario2;
 	std::string test;
+	
 
 	//leitura
 	std::string sTokken, nome;

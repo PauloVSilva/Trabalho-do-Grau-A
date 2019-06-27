@@ -1,7 +1,5 @@
 #include "SistemaRanking.h"
 
-
-
 //SistemaRanking::SistemaRanking()
 //{
 //}
@@ -50,7 +48,7 @@ bool SistemaRanking::inicializar()
 bool SistemaRanking::salvar(Usuario &u)
 {
 	usuario = u;
-	arq.open("../assets/ranking.txt", std::ios::app | std::ios::out);
+	arq.open("../assets/ranking.txt", std::ios::out | std::ios::app);
 
 	if (arq.is_open()) {
 		test = " Pontos: ";
@@ -68,14 +66,17 @@ bool SistemaRanking::salvar(Usuario &u)
 void SistemaRanking::prepararRanking()
 {
 	//definir conf. do texto
-	branco.set(255, 255, 255, 255);
-	txtRanking.setFonte("arial");
+	//branco.set(255, 255, 255, 255);	
+
 	txtRanking.setCor(branco);
+	txtRanking.setFonte("arial");
+	txtRanking.desenhar(gJanela.getLargura() / 2, gJanela.getAltura() / 2);//nao esta desenhando
+	
 
 	if (!filaUsuario.empty()) {//se a fila de usuario nao estiver vazia
 		txtRanking.setString(filaUsuario.front().nome + " Pontos: " + std::to_string(filaUsuario.front().pontos));//desenhar score de primeiro da fila(provavelmente tem erro aqui)
 		filaUsuario.pop();//remove o primeiro da fila
 	}
 
-	txtRanking.desenhar(gJanela.getLargura() / 2, gJanela.getAltura() / 2);//nao esta desenhando
+	
 }

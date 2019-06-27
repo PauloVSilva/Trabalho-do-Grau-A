@@ -236,6 +236,7 @@ bool SistemaLogin::iniciarLogin()
 				if (listaUsuario.front().nome == input.getTexto()) {
 				lExiste = true;
 				}
+				
 
 				/*while (fimLista.nome != listaUsuario.front().nome) {
 					if (listaUsuario.front().nome == input.getTexto()) {

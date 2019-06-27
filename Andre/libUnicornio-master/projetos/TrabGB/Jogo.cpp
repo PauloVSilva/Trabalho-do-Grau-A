@@ -462,6 +462,13 @@ void Jogo::telaRanking()
 {
 	gMusica.parar();
 	fundoJogar.desenhar(gJanela.getLargura() / 2, gJanela.getAltura() / 2);
+	/*
+	txtCreditos.setCor(Branco);
+	txtCreditos.setFonte("arial");
+	txtCreditos.setString("Exibindo o ranking");
+	txtCreditos.desenhar(gJanela.getLargura() / 2, 200);
+	*/
+	sysRanking.prepararRanking();//nao esta funcionando
 
 	bVoltar.atualizar();
 	bVoltar.desenhar();
@@ -470,5 +477,5 @@ void Jogo::telaRanking()
 		pilhamenu.pop();
 	}
 
-	sysRanking.prepararRanking();//nao esta funcionando
+	
 }
